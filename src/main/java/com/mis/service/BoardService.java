@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mis.domain.BoardVO;
 import com.mis.domain.Criteria;
+import com.mis.domain.SearchCriteria;
 
 public interface BoardService {
 	
@@ -21,4 +22,10 @@ public interface BoardService {
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	public int listCountCriteria(Criteria cri) throws Exception;
+	
+	// 검색 기능 추가
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCountCriteria(SearchCriteria cri) throws Exception;
+
 }

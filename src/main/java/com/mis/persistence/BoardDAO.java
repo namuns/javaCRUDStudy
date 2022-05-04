@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mis.domain.BoardVO;
 import com.mis.domain.Criteria;
+import com.mis.domain.SearchCriteria;
 
 public interface BoardDAO {
 	
@@ -22,5 +23,14 @@ public interface BoardDAO {
 	
 	public int listCountCriteria(Criteria cri) throws Exception;
 	
+	//페이징 기능 추가
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCountCriteria(SearchCriteria cri) throws Exception;
+	
+	
+	//조회수 DAO -> mapper -> DAOImpl -> serviceImpl에서 method 추가
+
+	public void updateViewCount(int bno) throws Exception;
 
 }

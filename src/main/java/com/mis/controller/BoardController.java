@@ -62,7 +62,7 @@ public class BoardController {
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		
-		return "redirect:/board/listAll";
+		return "redirect:/sboard/listAll";
 		
 		
 	} 
@@ -78,7 +78,7 @@ public class BoardController {
 		service.modify(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/sboard/listAll";
 	}
 	
 	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
@@ -108,20 +108,28 @@ public class BoardController {
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
 	public void readPage(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 	model.addAttribute(service.read(bno));
+	
 	} 
 	
 	
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
 	public void modifyPageGET(int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 	model.addAttribute(service.read(bno));
+	
+	
+	PageMaker pageMaker = new PageMaker();
+	
+
+	
 	}
 	
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
 	public String modifyPagePOST(BoardVO vo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) throws Exception {
 
-		service.modify(vo);		
+		service.modify(vo);
 		
+
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		
@@ -129,6 +137,9 @@ public class BoardController {
 		
 		return "redirect:/board/listPage";
 	}
+	
+	
+	
 	
 
 

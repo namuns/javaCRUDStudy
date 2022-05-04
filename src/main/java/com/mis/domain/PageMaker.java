@@ -110,6 +110,20 @@ public class PageMaker {
 		return uriComponents.toUriString();
 		}
 	
+	// 페이징 버튼에서 사용할 페이지 이동 링크를 바로 만든다+ 검색(QueryString 만들기 -> jsp에서 호출해서 사용)
+	public String makeSearch(int page) {
+		
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum())
+				.queryParam("searchType", ((SearchCriteria)cri).getSearchType())
+				.queryParam("keyword", ((SearchCriteria)cri).getKeyword())
+				.build();
+				
+		
+		return uriComponents.toUriString();
+		}
+	
 	
 	
 }
